@@ -18,5 +18,9 @@ namespace NationClasses{
             int getPop(){
                 return population;
             }
+
+            void setPop(int newPop){
+                population = newPop;
+            }
     };
 }
