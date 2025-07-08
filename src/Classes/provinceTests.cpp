@@ -12,6 +12,10 @@ void popStorageTest() {
     testPop = 1000;
     testProvince.setPop(testPop);
     assert(testProvince.getPop() == testPop);
+
+    // Test for pop growth
+    testProvince.updateProvinceOnTurnChange();
+    assert(testProvince.getPop() == testPop * 1.2);
 }
 
 int main(){

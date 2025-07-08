@@ -4,6 +4,7 @@ namespace NationClasses{
     class Province{
         private:
             int population;
+            double popGrowthFactor = 1.2;
             /*std::string provinceBiome;
             bool containsMetal;
             bool containsRareMetal;
@@ -13,6 +14,10 @@ namespace NationClasses{
         public:
             Province (int initPop){
                 population = initPop;
+            }
+
+            void updateProvinceOnTurnChange(){
+                population = population * popGrowthFactor;
             }
 
             int getPop(){
