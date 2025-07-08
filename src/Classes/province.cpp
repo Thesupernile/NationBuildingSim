@@ -3,6 +3,7 @@
 namespace NationClasses{
     class Province{
         private:
+            int id = 0;
             int population;
             double popGrowthFactor = 1.2;
             /*std::string provinceBiome;
@@ -26,6 +27,10 @@ namespace NationClasses{
 
             void setPop(int newPop){
                 population = newPop;
+            }
+
+            int getId(){
+                return id;
             }
     };
 }

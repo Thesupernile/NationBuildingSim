@@ -1,24 +1,17 @@
-#include <cassert>
+#include <gtest/gtest.h>
 #include "province.cpp"
 
-void popStorageTest() {
-    // Ensure basic functionality of the population functions
-    // Test for init of pop
-    int testPop = 100;
+TEST(BasicProvinceTests, setPop){
     NationClasses::Province testProvince = NationClasses::Province(100);
-    assert(testProvince.getPop() == testPop);
-
-    // Test for updating pop
-    testPop = 1000;
-    testProvince.setPop(testPop);
-    assert(testProvince.getPop() == testPop);
-
-    // Test for pop growth
-    testProvince.updateProvinceOnTurnChange();
-    assert(testProvince.getPop() == testPop * 1.2);
+    EXPECT_EQ(testProvince.getPop(), 100);
+    testProvince.setPop(1000);
+    EXPECT_EQ(testProvince.getPop(), 1000);
 }
 
-int main(){
-    popStorageTest();
-    return 0;
+TEST(BasicProvinceTests, updatePopOnTurnChange){
+    NationClasses::Province testProvince = NationClasses::Province(100);
+    testProvince.updateProvinceOnTurnChange();
+    EXPECT_EQ(testProvince.getPop(), 120);
+    testProvince.updateProvinceOnTurnChange();
+    EXPECT_EQ(testProvince.getPop(), 144);
 }
