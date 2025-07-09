@@ -5,7 +5,7 @@ namespace NationClasses{
         static int previousId;
 
         private:
-            int id;
+            int id = 0;
             int population;
             double popGrowthFactor = 1.2;
             /*std::string provinceBiome;
@@ -17,8 +17,14 @@ namespace NationClasses{
         public:
             Province (int initPop){
                 population = initPop;
-                //id = previousId;
-                //previousId++;
+                
+                // if (previousId == NULL){
+                //     previousId = id;
+                // }
+                // else{
+                //     id = previousId;
+                // }
+                // previousId++;
             }
 
             void updateProvinceOnTurnChange(){

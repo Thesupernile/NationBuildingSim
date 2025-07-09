@@ -2,16 +2,24 @@
 #include "province.cpp"
 
 TEST(BasicProvinceTests, setPop){
-    NationClasses::Province testProvince = NationClasses::Province(100);
-    EXPECT_EQ(testProvince.getPop(), 100);
-    testProvince.setPop(1000);
-    EXPECT_EQ(testProvince.getPop(), 1000);
+    const int initPop = 100;
+    const int updatedPop = 1000;
+
+    NationClasses::Province testProvince = NationClasses::Province(initPop);
+    EXPECT_EQ(testProvince.getPop(), initPop);
+    testProvince.setPop(updatedPop);
+    EXPECT_EQ(testProvince.getPop(), updatedPop);
 }
 
 TEST(BasicProvinceTests, updatePopOnTurnChange){
-    NationClasses::Province testProvince = NationClasses::Province(100);
+    // Growth rate is default set to 1.2 so it is expected that 100 will produce 120 and 144 when updated twice
+    const int initPop = 100;
+    const int expectedPopIter1 = 120;
+    const int expectedPopIter2 = 144;
+
+    NationClasses::Province testProvince = NationClasses::Province(initPop);
     testProvince.updateProvinceOnTurnChange();
-    EXPECT_EQ(testProvince.getPop(), 120);
+    EXPECT_EQ(testProvince.getPop(), expectedPopIter1);
     testProvince.updateProvinceOnTurnChange();
-    EXPECT_EQ(testProvince.getPop(), 144);
+    EXPECT_EQ(testProvince.getPop(), expectedPopIter2);
 }
