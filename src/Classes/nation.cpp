@@ -5,6 +5,7 @@ namespace NationClasses{
     class Nation{
         private:
             std::vector<Province> provinces;
+            std::string nationName;
             /*int armyPower;
             int navalPower;
             int airPower;
@@ -19,8 +20,8 @@ namespace NationClasses{
             int woodStockpiled;*/
 
         public:
-            Nation() {
-
+            Nation(std::string name) {
+                nationName = name;
             }
 
             void addProvince(Province provinceToAdd){
@@ -39,9 +40,13 @@ namespace NationClasses{
                     throw "Province not found";
                 }
                 Province provinceToRemove = provinces[provinceIndex];
+                provinces.erase(provinces.begin() + provinceIndex);
 
                 return provinceToRemove;
+            }
 
+            std::vector<Province> getAllProvinces(){
+                return provinces;
             }
 
     };
