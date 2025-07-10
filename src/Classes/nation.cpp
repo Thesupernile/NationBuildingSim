@@ -14,7 +14,7 @@ namespace NationClasses{
             int civTechLevel;*/
 
             int goldStockpiled = 0;
-            int foodStockpiled;
+            int foodStockpiled = 0;
             /*int metalStockpiled;
             int rareMetalStockpiled;
             int woodStockpiled;*/
@@ -52,14 +52,22 @@ namespace NationClasses{
             }
 
             void processTurn(){
-                int* resources[] = {&goldStockpiled, &foodStockpiled};
+                int* currentResources[] = {&goldStockpiled, &foodStockpiled};
 
                 for (auto province : provinces){
-                    province.creditProvinceResources(resources);
+                    province.creditProvinceResources(currentResources);
                 }
 
-                goldStockpiled = *resources[0];
-                foodStockpiled = *resources[1];
+                goldStockpiled = *currentResources[0];
+                foodStockpiled = *currentResources[1];
+            }
+
+            int getGold(){
+                return goldStockpiled;
+            }
+
+            int getFood(){
+                return foodStockpiled;
             }
 
     };

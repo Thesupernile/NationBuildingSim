@@ -1,4 +1,5 @@
 #include "headers/provice.hpp"
+#include <iostream>
 
 namespace NationClasses{
     class Province{
@@ -10,8 +11,8 @@ namespace NationClasses{
             double popGrowthFactor = 1.2;
             /*std::string provinceBiome;
             bool containsMetal;
-            bool containsRareMetal;
-            bool containsFood;*/
+            bool containsRareMetal;*/
+            bool containsFood = true;
             bool containsGold = true;
 
         public:
@@ -35,7 +36,15 @@ namespace NationClasses{
                 int gold = *resourcesList[0];
                 int food = *resourcesList[1];
 
-                
+                if (containsGold){
+                    gold++;
+                }
+                if (containsFood){
+                    food++;
+                }
+
+                *resourcesList[0] = gold;
+                *resourcesList[1] = food;
             }
 
             int getPop(){
