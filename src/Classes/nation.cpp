@@ -13,15 +13,17 @@ namespace NationClasses{
             int diploTechLevel;
             int civTechLevel;*/
 
-            //int goldStockpiled;
-            /*int foodStockpiled;
-            int metalStockpiled;
+            int goldStockpiled = 0;
+            int foodStockpiled;
+            /*int metalStockpiled;
             int rareMetalStockpiled;
             int woodStockpiled;*/
 
+            bool isPlayerControlled = false;
+
         public:
-            Nation(std::string name) {
-                nationName = name;
+            Nation(std::string nameInit) {
+                nationName = nameInit;
             }
 
             void addProvince(Province provinceToAdd){
@@ -47,6 +49,17 @@ namespace NationClasses{
 
             std::vector<Province> getAllProvinces(){
                 return provinces;
+            }
+
+            void processTurn(){
+                int* resources[] = {&goldStockpiled, &foodStockpiled};
+
+                for (auto province : provinces){
+                    province.creditProvinceResources(resources);
+                }
+
+                goldStockpiled = *resources[0];
+                foodStockpiled = *resources[1];
             }
 
     };

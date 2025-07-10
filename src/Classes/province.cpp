@@ -11,13 +11,13 @@ namespace NationClasses{
             /*std::string provinceBiome;
             bool containsMetal;
             bool containsRareMetal;
-            bool containsFood;
-            bool containsGold;*/
+            bool containsFood;*/
+            bool containsGold = true;
 
         public:
-            Province (int initPop){
+            Province (int initPop, int initId){
                 population = initPop;
-                
+                id = initId;
                 // if (previousId == NULL){
                 //     previousId = id;
                 // }
@@ -29,6 +29,13 @@ namespace NationClasses{
 
             void updateProvinceOnTurnChange(){
                 population = population * popGrowthFactor;
+            }
+
+            void creditProvinceResources(int* resourcesList[]){
+                int gold = *resourcesList[0];
+                int food = *resourcesList[1];
+
+                
             }
 
             int getPop(){

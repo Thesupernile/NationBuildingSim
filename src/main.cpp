@@ -10,6 +10,8 @@ int main(){
 /*
 Notes:
 
+Need to implement province initialisation and assignment to inital nations
+
 Resources:
 -Wood
 -Metal
