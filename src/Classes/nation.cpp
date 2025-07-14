@@ -1,5 +1,5 @@
-#include <vector>
 #include "province.cpp"
+#include <vector>
 
 namespace NationClasses{
     class Nation{
@@ -41,6 +41,7 @@ namespace NationClasses{
 
             Province removeProvince(int id){
                 int provinceIndex = -1;
+                // Linear search used since list size expected to be small
                 for (size_t i = 0; i < provinces.size(); i++){
                     Province currentProvince = provinces[i];
                     if (currentProvince.getId() == id){
@@ -50,6 +51,7 @@ namespace NationClasses{
                 if (provinceIndex == -1){
                     throw "Province not found";
                 }
+
                 Province provinceToRemove = provinces[provinceIndex];
                 provinces.erase(provinces.begin() + provinceIndex);
 

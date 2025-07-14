@@ -1,9 +1,7 @@
-#include "Classes/province.cpp"
-#include <iostream>
-
+#include "gameUI.cpp"
 
 int main(){
-    
+    NationClasses::Nation playerNation = gameUI::createPlayerNation();
     return 0;
 }
 

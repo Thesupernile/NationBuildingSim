@@ -1,5 +1,5 @@
-#include "headers/provice.hpp"
 #include <iostream>
+#include "headers/provice.hpp"
 
 namespace NationClasses{
     class Province{
