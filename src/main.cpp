@@ -1,7 +1,10 @@
 #include "gameUI.cpp"
 
 int main(){
+    NationClasses::Province provinceMap[MAPSIZE];
+    gameUI::createMap(&provinceMap[MAPSIZE]);
     NationClasses::Nation playerNation = gameUI::createPlayerNation();
+    
     return 0;
 }
 

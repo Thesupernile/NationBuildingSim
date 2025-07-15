@@ -14,11 +14,14 @@ namespace NationClasses{
             bool containsRareMetal;*/
             bool containsFood = true;
             bool containsGold = true;
+            bool isLand = true;
 
         public:
-            Province (int initPop, int initId){
+            Province (int initPop = 0, int initId = 0, bool isLandInit = false){
+                // By default a province is an empty ocean tile
                 population = initPop;
                 id = initId;
+                isLand = isLandInit;
                 // if (previousId == NULL){
                 //     previousId = id;
                 // }
@@ -57,6 +60,10 @@ namespace NationClasses{
 
             int getId(){
                 return id;
+            }
+
+            void setId(int newId){
+                id = newId;
             }
     };
 }
