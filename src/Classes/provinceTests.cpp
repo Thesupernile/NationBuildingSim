@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "province.cpp"
+#include "../gameUI.cpp"
 
 TEST(BasicProvinceTests, setPop){
     const int provinceId = 0; // Temp
@@ -24,4 +24,9 @@ TEST(BasicProvinceTests, updatePopOnTurnChange){
     EXPECT_EQ(testProvince.getPop(), expectedPopIter1);
     testProvince.updateProvinceOnTurnChange();
     EXPECT_EQ(testProvince.getPop(), expectedPopIter2);
+}
+
+TEST(MapCreationTest, creatingMap){
+    NationClasses::Province provinceMap[MAPSIZE];
+    gameUI::createMap(provinceMap);
 }

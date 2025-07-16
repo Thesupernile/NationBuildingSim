@@ -3,12 +3,10 @@
 const int MAPSIZE = 64;
 
 namespace gameUI{
-    void createMap(NationClasses::Province* provinceMap){
-        // Code to come...
+    void createMap(NationClasses::Province provinceMap[]){
         for (int i = 0; i < MAPSIZE; i++){
             provinceMap[i].setId(i);
         }
-
     }
 
     NationClasses::Nation createPlayerNation(){
