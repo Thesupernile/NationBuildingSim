@@ -32,7 +32,7 @@ namespace NationClasses{
             }
 
             void updateProvinceOnTurnChange(){
-                population = population * popGrowthFactor;
+                population = floor(population * popGrowthFactor);
             }
 
             void creditProvinceResources(int* resourcesList[]){
@@ -68,8 +68,12 @@ namespace NationClasses{
                 id = newId;
             }
 
-            void setLand(bool isLandNewValue){
+            void setIsLand(bool isLandNewValue){
                 isLand = isLandNewValue;
+            }
+
+            bool getIsLand(){
+                return isLand;
             }
     };
 }

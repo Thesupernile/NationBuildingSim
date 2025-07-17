@@ -12,10 +12,10 @@ namespace gameUI{
             int randomSelection = rand() % 2;
             switch(randomSelection){
                 case 0:
-                    newProvince.setLand(false);
+                    newProvince.setIsLand(false);
                     break;
                 default:
-                    newProvince.setLand(true);
+                    newProvince.setIsLand(true);
                     break;
             }
             provinceMap.push_back(newProvince);
@@ -23,8 +23,19 @@ namespace gameUI{
     }
 
     void displayMap(std::vector<NationClasses::Province> provinceMap){
-        for(auto province : provinceMap){
-            
+        int mapWidth = floor(sqrt(MAPSIZE));
+        for(int i = 0; i < provinceMap.size(); i++){
+            if(provinceMap[i].getIsLand()){
+                std::cout << "#";
+            }
+            else{
+                std::cout << ".";
+            }
+
+
+            if (i % mapWidth == 0){
+                std::cout << "\n";
+            }
         }
     }
 

@@ -3,6 +3,7 @@
 int main(){
     std::vector<NationClasses::Province> provinceMap;
     gameUI::createMap(provinceMap);
+    gameUI::displayMap(provinceMap);
     NationClasses::Nation playerNation = gameUI::createPlayerNation();
     
     return 0;
