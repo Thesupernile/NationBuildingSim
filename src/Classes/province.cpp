@@ -50,6 +50,8 @@ namespace NationClasses{
                 *resourcesList[1] = food;
             }
 
+            // Getters and Setters
+
             int getPop(){
                 return population;
             }
@@ -64,6 +66,10 @@ namespace NationClasses{
 
             void setId(int newId){
                 id = newId;
+            }
+
+            void setLand(bool isLandNewValue){
+                isLand = isLandNewValue;
             }
     };
 }
