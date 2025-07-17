@@ -4,19 +4,27 @@
 const int MAPSIZE = 64;
 
 namespace gameUI{
-    void createMap(NationClasses::Province provinceMap[]){
+    void createMap(std::vector<NationClasses::Province> provinceMap){
         for (int i = 0; i < MAPSIZE; i++){
-            provinceMap[i].setId(i);
+            NationClasses::Province newProvince;
+            newProvince.setId(i);
             // Assign province biome at random since it's easier
             int randomSelection = rand() % 2;
             switch(randomSelection){
                 case 0:
-                    provinceMap[i].setLand(false);
+                    newProvince.setLand(false);
                     break;
                 default:
-                    provinceMap[i].setLand(true);
+                    newProvince.setLand(true);
                     break;
             }
+            provinceMap.push_back(newProvince);
+        }
+    }
+
+    void displayMap(std::vector<NationClasses::Province> provinceMap){
+        for(auto province : provinceMap){
+            
         }
     }
 

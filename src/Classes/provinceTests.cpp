@@ -27,6 +27,6 @@ TEST(BasicProvinceTests, updatePopOnTurnChange){
 }
 
 TEST(MapCreationTest, creatingMap){
-    NationClasses::Province provinceMap[MAPSIZE];
+    std::vector<NationClasses::Province> provinceMap;
     gameUI::createMap(provinceMap);
 }
