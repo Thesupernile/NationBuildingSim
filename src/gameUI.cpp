@@ -4,7 +4,7 @@
 const int MAPSIZE = 64;
 
 namespace gameUI{
-    void createMap(std::vector<NationClasses::Province> provinceMap){
+    void createMap(std::vector<NationClasses::Province>* provinceMap){
         for (int i = 0; i < MAPSIZE; i++){
             NationClasses::Province newProvince;
             newProvince.setId(i);
@@ -18,7 +18,7 @@ namespace gameUI{
                     newProvince.setIsLand(true);
                     break;
             }
-            provinceMap.push_back(newProvince);
+            (*provinceMap).push_back(newProvince);
         }
     }
 
@@ -33,7 +33,7 @@ namespace gameUI{
             }
 
 
-            if (i % mapWidth == 0){
+            if (i % mapWidth == (mapWidth-1)){
                 std::cout << "\n";
             }
         }
