@@ -21,15 +21,6 @@ namespace NationClasses{
 
             bool isPlayerControlled = false;
 
-            void displayNationStats(){
-                std::cout << nationName;
-                std::cout << "Total Provinces: " << provinces.size();
-                std::cout << "Gold: " << goldStockpiled;
-                std::cout << "Food: " << foodStockpiled;
-
-                std::cin;
-            }
-
         public:
             Nation(std::string nameInit) {
                 nationName = nameInit;
@@ -62,8 +53,8 @@ namespace NationClasses{
                 return provinces;
             }
 
-            void processTurn(){
-                std::cout << "Playing turn of " << nationName;
+            void processResourceGain(){
+                std::cout << "Playing turn of " << nationName << "\n";
                 int* currentResources[] = {&goldStockpiled, &foodStockpiled};
 
                 for (auto province : provinces){
@@ -73,19 +64,14 @@ namespace NationClasses{
                 goldStockpiled = *currentResources[0];
                 foodStockpiled = *currentResources[1];
 
-                std::cout << "Collected resources from provinces.";
+                std::cout << "Collected resources from provinces.\n";      
+            }
 
-                std::cout << "Would you like to see the resources your nation has stockpiled? Y/N";
-                // Note to self: add validation for this input in future
-                std::string userRespSeeStockpiles;
-                std::cin >> userRespSeeStockpiles;
-
-                if (userRespSeeStockpiles == "Y"){
-                    displayNationStats();
-                }
-
-                
-                
+            void displayNationInfo(){
+                std::cout << nationName << ": \n\n";
+                std::cout << "Total Provinces: " << provinces.size() << "\n";
+                std::cout << "Gold: " << goldStockpiled << "\n";
+                std::cout << "Food: " << foodStockpiled << "\n";
             }
 
             int getGold(){

@@ -3,8 +3,20 @@
 int main(){
     std::vector<NationClasses::Province> provinceMap;
     gameUI::createMap(&provinceMap);
-    gameUI::displayMap(provinceMap);
     NationClasses::Nation playerNation = gameUI::createPlayerNation();
+
+    bool runGame = true;
+    while (runGame){
+        playerNation.processResourceGain();
+        playerNation.displayNationInfo();
+
+        std::cout << "Would you like to continue? Y/N\n";
+        std::string userResponse;
+        std::cin >> userResponse;
+        if (userResponse == "N"){
+            runGame = false;
+        }
+    }
     
     return 0;
 }
@@ -21,5 +33,8 @@ Resources:
 -Food
 -Gold
 -
+
+At some point it will be worth pre-calculating which provinces each province borders (by ocean) 
+that way we don't have to recaculate every time
 
 */

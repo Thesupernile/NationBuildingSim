@@ -35,12 +35,12 @@ TEST(BasicNationTests, creditResources){
     EXPECT_EQ(testNation.getFood(), initFood);
 
     // Expect no change as no province to 
-    testNation.processTurn();
+    testNation.processResourceGain();
     EXPECT_EQ(testNation.getGold(), initGold);
     EXPECT_EQ(testNation.getFood(), initFood);
 
     testNation.addProvince(testProvince);
-    testNation.processTurn();
+    testNation.processResourceGain();
     EXPECT_EQ(testNation.getGold(), finalGold);
     EXPECT_EQ(testNation.getFood(), finalFood);
 }
