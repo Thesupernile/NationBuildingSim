@@ -2,3 +2,9 @@
 /.vscode
 /.vs
 /out
+
+# Remove all build files
+**.exe
+**.obj
+**.ilk
+**.pdb

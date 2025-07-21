@@ -1,6 +1,7 @@
 #include "province.cpp"
 #include <vector>
 
+
 namespace NationClasses{
     class Nation{
         private:
