@@ -3,7 +3,8 @@
 int main(){
     std::vector<NationClasses::Province> provinceMap;
     gameUI::createMap(&provinceMap);
-    NationClasses::Nation playerNation = gameUI::createPlayerNation();
+    // Choose a starting province
+    NationClasses::Nation playerNation = gameUI::createPlayerNation(&provinceMap);
 
     bool runGame = true;
     while (runGame){

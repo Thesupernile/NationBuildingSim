@@ -39,13 +39,44 @@ namespace gameUI{
         }
     }
 
-    NationClasses::Nation createPlayerNation(){
+    NationClasses::Nation createPlayerNation(std::vector<NationClasses::Province>* provinceMap){
+        NationClasses::Province provinceSelected;
         std::string nationName;
+        std::string userResponseTemp;
+        int x;
+        int y;
+        bool validProvinceSelected = false;
 
-        std::cout << "Name your new nation!";
+        std::cout << "Name your new nation!\n";
         std::cin >> nationName;
 
+        displayMap(*provinceMap);
+        std::cout << "Choose a start Position for your nation\n";
+        while (!validProvinceSelected){
+
+            std::cout << "Enter the X-Coordinate of the province\n";
+            std::cin >> userResponseTemp;
+            x = stoi(userResponseTemp);
+
+            std::cout << "Enter the Y-Coordinate of the province\n";
+            std::cin >> userResponseTemp;
+            y = stoi(userResponseTemp);
+
+            // -1 since id's start at 0 not 1
+            int requiredProvinceId = (MAPSIZE * y) + x;
+            // Linear search used since list size is expected to be small
+            for(int i = 0; i < (*provinceMap).size(); i++){
+                if ((*provinceMap)[i].getId() == requiredProvinceId){
+                    provinceSelected = (*provinceMap)[i];
+                    (*provinceMap).erase((*provinceMap).begin() + i);
+                    validProvinceSelected = true;
+                    break;
+                }
+            }
+        }
+
         NationClasses::Nation newNation = NationClasses::Nation(nationName);
+        newNation.addProvince(provinceSelected);
         return newNation;
     }
 }
