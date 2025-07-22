@@ -24,7 +24,7 @@ namespace gameUI{
 
     void displayMap(std::vector<NationClasses::Province> provinceMap){
         int mapWidth = floor(sqrt(MAPSIZE));
-        for(int i = 0; i < provinceMap.size(); i++){
+        for(size_t i = 0; i < provinceMap.size(); i++){
             if(provinceMap[i].getIsLand()){
                 std::cout << "#";
             }
@@ -65,7 +65,7 @@ namespace gameUI{
             // -1 since id's start at 0 not 1
             int requiredProvinceId = (MAPSIZE * y) + x;
             // Linear search used since list size is expected to be small
-            for(int i = 0; i < (*provinceMap).size(); i++){
+            for(size_t i = 0; i < (*provinceMap).size(); i++){
                 if ((*provinceMap)[i].getId() == requiredProvinceId){
                     provinceSelected = (*provinceMap)[i];
                     (*provinceMap).erase((*provinceMap).begin() + i);

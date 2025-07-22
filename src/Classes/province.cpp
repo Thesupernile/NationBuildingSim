@@ -32,7 +32,7 @@ namespace NationClasses{
             }
 
             void updateProvinceOnTurnChange(){
-                population = floor(population * popGrowthFactor);
+                population = population * floor(popGrowthFactor);
             }
 
             void creditProvinceResources(int* resourcesList[]){
