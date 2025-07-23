@@ -8,14 +8,25 @@ int main(){
 
     bool runGame = true;
     while (runGame){
+        bool playerTurn = true;
         playerNation.processResourceGain();
         playerNation.displayNationInfo();
 
-        std::cout << "Would you like to continue? Y/N\n";
-        std::string userResponse;
-        std::cin >> userResponse;
-        if (userResponse == "N"){
-            runGame = false;
+        while (playerTurn){
+            std::cout << "Please enter the action you would like to take next (type help for a list of instrucitons)";
+            std::cout << "> ";
+            std::string userResponse;
+            std::cin >> userResponse;
+            if (userResponse == "exit"){
+                runGame = false;
+                playerTurn = false;
+            }
+            else if (userResponse == "turn" || userResponse == "next turn"){
+                playerTurn = false;
+            }
+            else{
+                std::cout << "Command not recognised";
+            }
         }
     }
     

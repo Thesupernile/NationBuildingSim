@@ -62,8 +62,8 @@ namespace gameUI{
             std::cin >> userResponseTemp;
             y = stoi(userResponseTemp);
 
-            // -1 since id's start at 0 not 1
-            int requiredProvinceId = (MAPSIZE * y) + x;
+            // Map is generated as a square but stored linearly
+            int requiredProvinceId = (floor(sqrt(MAPSIZE)) * y) + x;
             // Linear search used since list size is expected to be small
             for(size_t i = 0; i < (*provinceMap).size(); i++){
                 if ((*provinceMap)[i].getId() == requiredProvinceId){
