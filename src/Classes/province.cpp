@@ -6,7 +6,7 @@ namespace NationClasses{
         static int previousId;
 
         private:
-            int id = 0;
+            int id = 0;                     // Id is also used to determine the province's geographical location
             int population;
             double popGrowthFactor = 1.2;
             /*std::string provinceBiome;
@@ -22,13 +22,6 @@ namespace NationClasses{
                 population = initPop;
                 id = initId;
                 isLand = isLandInit;
-                // if (previousId == NULL){
-                //     previousId = id;
-                // }
-                // else{
-                //     id = previousId;
-                // }
-                // previousId++;
             }
 
             void updateProvinceOnTurnChange(){

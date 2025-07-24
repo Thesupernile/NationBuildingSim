@@ -13,7 +13,7 @@ int main(){
         playerNation.displayNationInfo();
 
         while (playerTurn){
-            std::cout << "Please enter the action you would like to take next (type help for a list of instrucitons)";
+            std::cout << "Please enter the action you would like to take next (type help for a list of instrucitons)\n";
             std::cout << "> ";
             std::string userResponse;
             std::cin >> userResponse;
@@ -21,11 +21,17 @@ int main(){
                 runGame = false;
                 playerTurn = false;
             }
+            else if (userResponse == "map" || userResponse == "show map"){
+                gameUI::displayMap(provinceMap, playerNation);
+            }
+            else if (userResponse == "colonise"){
+                gameUI::coloniseProvince(&provinceMap, &playerNation);
+            }
             else if (userResponse == "turn" || userResponse == "next turn"){
                 playerTurn = false;
             }
             else{
-                std::cout << "Command not recognised";
+                std::cout << "Command not recognised\n";
             }
         }
     }

@@ -8,7 +8,7 @@ namespace gameUI{
         for (int i = 0; i < MAPSIZE; i++){
             NationClasses::Province newProvince;
             newProvince.setId(i);
-            // Assign province biome at random since it's easier
+            // Assign province biome at random since it's easier (update in a future version?)
             int randomSelection = rand() % 2;
             switch(randomSelection){
                 case 0:
@@ -22,21 +22,34 @@ namespace gameUI{
         }
     }
 
-    void displayMap(std::vector<NationClasses::Province> provinceMap){
+    void displayMap(std::vector<NationClasses::Province> provinceMap, NationClasses::Nation playerNation = NationClasses::Nation("null")){
         int mapWidth = floor(sqrt(MAPSIZE));
-        for(size_t i = 0; i < provinceMap.size(); i++){
-            if(provinceMap[i].getIsLand()){
-                std::cout << "#";
+        int ownedProvincesAdded = 0;
+
+        for(size_t i = 0; i < MAPSIZE; i++){
+            if (provinceMap[i - ownedProvincesAdded].getId() == i){
+                if(provinceMap[i - ownedProvincesAdded].getIsLand()){
+                    std::cout << "#";
+                }
+                else{
+                    std::cout << ".";
+                }
+
+
+                if (i % mapWidth == (mapWidth-1)){
+                    std::cout << "\n";
+                }
             }
             else{
-                std::cout << ".";
-            }
-
-
-            if (i % mapWidth == (mapWidth-1)){
-                std::cout << "\n";
+                ownedProvincesAdded++;
+                std::cout << "*";
             }
         }
+    }
+
+    void coloniseProvince(std::vector<NationClasses::Province>* provinceMap, NationClasses::Nation* playerNation){
+        // Handles colonisation of unowned provinces
+        
     }
 
     NationClasses::Nation createPlayerNation(std::vector<NationClasses::Province>* provinceMap){
