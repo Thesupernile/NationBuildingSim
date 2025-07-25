@@ -14,6 +14,7 @@ namespace NationClasses{
             int diploTechLevel;
             int civTechLevel;*/
 
+            int population = 0;
             int goldStockpiled = 0;
             int foodStockpiled = 0;
             /*int metalStockpiled;
@@ -29,6 +30,7 @@ namespace NationClasses{
 
             void addProvince(Province provinceToAdd){
                 provinces.push_back(provinceToAdd);
+                population += provinceToAdd.getPop();
             }
 
             Province removeProvince(int id){
@@ -55,7 +57,7 @@ namespace NationClasses{
             }
 
             void processResourceGain(){
-                std::cout << "Playing turn of " << nationName << "\n";
+                std::cout << "Playing turn of " << nationName << std::endl;
                 int* currentResources[] = {&goldStockpiled, &foodStockpiled};
 
                 for (auto province : provinces){
@@ -68,9 +70,17 @@ namespace NationClasses{
                 std::cout << "Collected resources from provinces.\n";      
             }
 
+            void updateProvinces(){
+                for (auto province : provinces){
+                    province.updateProvinceOnTurnChange();
+                }
+            }
+
             void displayNationInfo(){
                 std::cout << nationName << ": \n\n";
                 std::cout << "Total Provinces: " << provinces.size() << "\n";
+                std::cout << "Empire Population: " << population << "\n\n";
+
                 std::cout << "Gold: " << goldStockpiled << "\n";
                 std::cout << "Food: " << foodStockpiled << "\n";
             }

@@ -1,7 +1,8 @@
 #include "Classes/nation.cpp"
 #include <string>
 #include <cstdlib>
-const int MAPSIZE = 64;
+const int MAPSIZE = 64;                 // Map size. Map is generated as a square
+const int COLONISECOST = 5;             // Cost to colonise an unowned province
 
 namespace gameUI{
     void createMap(std::vector<NationClasses::Province>* provinceMap){
@@ -16,6 +17,7 @@ namespace gameUI{
                     break;
                 default:
                     newProvince.setIsLand(true);
+                    newProvince.setPop(1000);
                     break;
             }
             (*provinceMap).push_back(newProvince);
@@ -70,7 +72,7 @@ namespace gameUI{
             int targetProvinceId = y*mapWidth + x;
             for (int i = 0; i < (*provinceMap).size(); i++){
                 if ((*provinceMap)[i].getId() == targetProvinceId){
-                    
+
                     (*playerNation).addProvince((*provinceMap)[i]);
                     (*provinceMap).erase((*provinceMap).begin() + i);
 
@@ -81,7 +83,7 @@ namespace gameUI{
                 }
             }
             if (!validProvinceSelected){
-                std::cout << "Province selected already owned\n";
+                std::cout << "Province selected is already owned\n";
             }
         }
     }
@@ -121,9 +123,13 @@ namespace gameUI{
                 }
             }
         }
-
         NationClasses::Nation newNation = NationClasses::Nation(nationName);
         newNation.addProvince(provinceSelected);
         return newNation;
+    }
+
+    void printHelpInstructions(){
+        // Prints instructions of what commands are available for the user
+        
     }
 }

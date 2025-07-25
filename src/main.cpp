@@ -10,6 +10,7 @@ int main(){
     while (runGame){
         bool playerTurn {true};
         playerNation.processResourceGain();
+        playerNation.updateProvinces();
         playerNation.displayNationInfo();
 
         while (playerTurn){
@@ -25,7 +26,7 @@ int main(){
                 gameUI::displayMap(provinceMap, playerNation);
             }
             else if (userResponse == "colonise"){
-                if (playerNation.getGold() >= 5){
+                if (playerNation.getGold() >= COLONISECOST){
                     gameUI::coloniseProvince(&provinceMap, &playerNation);
                 }
                 else{
@@ -34,6 +35,9 @@ int main(){
             }
             else if (userResponse == "turn" || userResponse == "next turn"){
                 playerTurn = false;
+            }
+            else if (userResponse == "help"){
+                gameUI::printHelpInstructions();
             }
             else{
                 std::cout << "Command not recognised\n";
