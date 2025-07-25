@@ -49,7 +49,41 @@ namespace gameUI{
 
     void coloniseProvince(std::vector<NationClasses::Province>* provinceMap, NationClasses::Nation* playerNation){
         // Handles colonisation of unowned provinces
-        
+        bool validProvinceSelected {false};
+        std::string userResponseTemp {};
+        int mapWidth = floor(sqrt(MAPSIZE));
+
+        displayMap(*provinceMap, *playerNation);
+        std::cout << "Choose a province to select:";
+        while (!validProvinceSelected){
+            int x {};
+            int y {};
+
+            std::cout << "Enter the x-coordinate: \n";
+            std::cin >> userResponseTemp;
+            x = stoi(userResponseTemp);
+
+            std::cout << "Enter the y-coordinate: \n";
+            std::cin >> userResponseTemp;
+            y = stoi(userResponseTemp);
+
+            int targetProvinceId = y*mapWidth + x;
+            for (int i = 0; i < (*provinceMap).size(); i++){
+                if ((*provinceMap)[i].getId() == targetProvinceId){
+                    
+                    (*playerNation).addProvince((*provinceMap)[i]);
+                    (*provinceMap).erase((*provinceMap).begin() + i);
+
+                    (*playerNation).modifyGold(-5);
+
+                    std::cout << "Colonisation successful\n";
+                    validProvinceSelected = true;
+                }
+            }
+            if (!validProvinceSelected){
+                std::cout << "Province selected already owned\n";
+            }
+        }
     }
 
     NationClasses::Nation createPlayerNation(std::vector<NationClasses::Province>* provinceMap){

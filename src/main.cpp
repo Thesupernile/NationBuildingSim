@@ -6,9 +6,9 @@ int main(){
     // Choose a starting province
     NationClasses::Nation playerNation = gameUI::createPlayerNation(&provinceMap);
 
-    bool runGame = true;
+    bool runGame {true};
     while (runGame){
-        bool playerTurn = true;
+        bool playerTurn {true};
         playerNation.processResourceGain();
         playerNation.displayNationInfo();
 
@@ -25,7 +25,12 @@ int main(){
                 gameUI::displayMap(provinceMap, playerNation);
             }
             else if (userResponse == "colonise"){
-                gameUI::coloniseProvince(&provinceMap, &playerNation);
+                if (playerNation.getGold() >= 5){
+                    gameUI::coloniseProvince(&provinceMap, &playerNation);
+                }
+                else{
+                    std::cout << "You do not have enough gold to complete this action";
+                }
             }
             else if (userResponse == "turn" || userResponse == "next turn"){
                 playerTurn = false;

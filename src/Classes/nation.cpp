@@ -79,6 +79,10 @@ namespace NationClasses{
                 return goldStockpiled;
             }
 
+            void modifyGold(int value){
+                goldStockpiled += value;
+            }
+
             int getFood(){
                 return foodStockpiled;
             }
