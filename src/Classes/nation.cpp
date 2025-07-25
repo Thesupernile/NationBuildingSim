@@ -1,6 +1,6 @@
 #include "province.cpp"
 #include <vector>
-
+const double popPerUnitFood = 2000;
 
 namespace NationClasses{
     class Nation{
@@ -15,8 +15,8 @@ namespace NationClasses{
             int civTechLevel;*/
 
             int population = 0;
-            int goldStockpiled = 0;
-            int foodStockpiled = 0;
+            double goldStockpiled = 0;
+            double foodStockpiled = 0;
             /*int metalStockpiled;
             int rareMetalStockpiled;
             int woodStockpiled;*/
@@ -58,7 +58,7 @@ namespace NationClasses{
 
             void processResourceGain(){
                 std::cout << "Playing turn of " << nationName << std::endl;
-                int* currentResources[] = {&goldStockpiled, &foodStockpiled};
+                double* currentResources[] = {&goldStockpiled, &foodStockpiled};
 
                 for (auto province : provinces){
                     province.creditProvinceResources(currentResources);
@@ -67,25 +67,37 @@ namespace NationClasses{
                 goldStockpiled = *currentResources[0];
                 foodStockpiled = *currentResources[1];
 
-                std::cout << "Collected resources from provinces.\n";      
+                std::cout << "Collected resources from provinces.\n";
+
+                // Food must be given to provinces in the amount determined by popPerUnitFood
+                foodStockpiled -= population/popPerUnitFood;
+
+                std::cout << "Distributed food to provinces. \n";       
             }
 
             void updateProvinces(){
+                // It is necessary to update population here to ensure the pop count is accurate
+                population = 0;
                 for (auto province : provinces){
                     province.updateProvinceOnTurnChange();
+                    population += province.getPop();
+                    std::cout << province.getPop();
                 }
+                std::cout << "Provinces updated. \n";
             }
 
             void displayNationInfo(){
+                std::cout.precision(3);
+
                 std::cout << nationName << ": \n\n";
                 std::cout << "Total Provinces: " << provinces.size() << "\n";
-                std::cout << "Empire Population: " << population << "\n\n";
+                std::cout << "Nation Population: " << population << "\n\n";
 
                 std::cout << "Gold: " << goldStockpiled << "\n";
                 std::cout << "Food: " << foodStockpiled << "\n";
             }
 
-            int getGold(){
+            double getGold(){
                 return goldStockpiled;
             }
 
@@ -93,7 +105,7 @@ namespace NationClasses{
                 goldStockpiled += value;
             }
 
-            int getFood(){
+            double getFood(){
                 return foodStockpiled;
             }
 

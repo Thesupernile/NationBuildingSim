@@ -25,12 +25,12 @@ namespace NationClasses{
             }
 
             void updateProvinceOnTurnChange(){
-                population = population * floor(popGrowthFactor);
+                population = population * popGrowthFactor;
             }
 
-            void creditProvinceResources(int* resourcesList[]){
-                int gold = *resourcesList[0];
-                int food = *resourcesList[1];
+            void creditProvinceResources(double* resourcesList[]){
+                double gold = *resourcesList[0];
+                double food = *resourcesList[1];
 
                 if (containsGold){
                     gold++;
