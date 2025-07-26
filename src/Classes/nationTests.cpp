@@ -21,12 +21,12 @@ TEST(BasicNationTests, addAndRemoveProvince){
 
 TEST(BasicNationTests, creditResources){
     const int provinceId = 0; // Temp
-    const int initPop = 100;
+    const int initPop = 1000;
 
     const int initGold = 0;
     const int initFood = 0;
     const int finalGold = 1;
-    const int finalFood = 1;
+    const double finalFood = 0.5;
 
     NationClasses::Nation testNation = NationClasses::Nation("Testopia");
     NationClasses::Province testProvince = NationClasses::Province(initPop, provinceId);

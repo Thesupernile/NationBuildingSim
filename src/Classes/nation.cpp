@@ -76,10 +76,22 @@ namespace NationClasses{
             }
 
             void updateProvinces(){
-                // It is necessary to update population here to ensure the pop count is accurate
+                bool isNationStarving {};
                 population = 0;
+
+                // If nation is starving, provinces decrease population instead of increasing
+                if (foodStockpiled >= 0){
+                    isNationStarving = false;
+                }
+                else{
+                    isNationStarving = true;
+                    foodStockpiled = 0;
+                    std::cout << "You do not have enough food for your people. They are starving.\n";
+                }
+
+                // It is necessary to update population here to ensure the pop count is accurate
                 for (auto &province : provinces){
-                    province.updateProvinceOnTurnChange();
+                    province.updateProvinceOnTurnChange(isNationStarving);
                     population += province.getPop();
                 }
                 std::cout << "Provinces updated. \n";

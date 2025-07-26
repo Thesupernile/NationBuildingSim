@@ -18,11 +18,12 @@ TEST(BasicProvinceTests, updatePopOnTurnChange){
     const int initPop = 100;
     const int expectedPopIter1 = 120;
     const int expectedPopIter2 = 144;
+    const bool isProvinceStarving = false;
 
     NationClasses::Province testProvince = NationClasses::Province(initPop, provinceId);
-    testProvince.updateProvinceOnTurnChange();
+    testProvince.updateProvinceOnTurnChange(isProvinceStarving);
     EXPECT_EQ(testProvince.getPop(), expectedPopIter1);
-    testProvince.updateProvinceOnTurnChange();
+    testProvince.updateProvinceOnTurnChange(isProvinceStarving);
     EXPECT_EQ(testProvince.getPop(), expectedPopIter2);
 }
 

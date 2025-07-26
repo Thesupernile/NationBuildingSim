@@ -1,18 +1,21 @@
 #include <iostream>
 #include "headers/provice.hpp"
 
+const double popStarveFactor = 0.8;
+
 namespace NationClasses{
     class Province{
         static int previousId;
 
         private:
             int id = 0;                     // Id is also used to determine the province's geographical location
+            int daysStarved = 0;
             int population;
             double popGrowthFactor = 1.2;
             /*std::string provinceBiome;
             bool containsMetal;
             bool containsRareMetal;*/
-            bool containsFood = true;
+            int farmLevel = 1;
             bool containsGold = true;
             bool isLand = true;
 
@@ -24,8 +27,15 @@ namespace NationClasses{
                 isLand = isLandInit;
             }
 
-            void updateProvinceOnTurnChange(){
-                population = population * popGrowthFactor;
+            void updateProvinceOnTurnChange(bool isProvinceStarving){
+                if (isProvinceStarving){
+                    population = population * pow(popStarveFactor, daysStarved);
+                    daysStarved++;
+                }
+                else{
+                    population = population * popGrowthFactor;
+                    daysStarved = 0;
+                }
             }
 
             void creditProvinceResources(double* resourcesList[]){
@@ -35,9 +45,8 @@ namespace NationClasses{
                 if (containsGold){
                     gold++;
                 }
-                if (containsFood){
-                    food++;
-                }
+                
+                food += farmLevel;
 
                 *resourcesList[0] = gold;
                 *resourcesList[1] = food;
