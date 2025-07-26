@@ -60,7 +60,7 @@ namespace NationClasses{
                 std::cout << "Playing turn of " << nationName << std::endl;
                 double* currentResources[] = {&goldStockpiled, &foodStockpiled};
 
-                for (auto province : provinces){
+                for (auto &province : provinces){
                     province.creditProvinceResources(currentResources);
                 }
 
@@ -78,10 +78,9 @@ namespace NationClasses{
             void updateProvinces(){
                 // It is necessary to update population here to ensure the pop count is accurate
                 population = 0;
-                for (auto province : provinces){
+                for (auto &province : provinces){
                     province.updateProvinceOnTurnChange();
                     population += province.getPop();
-                    std::cout << province.getPop();
                 }
                 std::cout << "Provinces updated. \n";
             }

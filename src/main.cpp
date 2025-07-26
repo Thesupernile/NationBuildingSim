@@ -10,7 +10,6 @@ int main(){
     while (runGame){
         bool playerTurn {true};
         playerNation.processResourceGain();
-        playerNation.updateProvinces();
         playerNation.displayNationInfo();
 
         while (playerTurn){
@@ -43,6 +42,7 @@ int main(){
                 std::cout << "Command not recognised\n";
             }
         }
+        playerNation.updateProvinces();
     }
     
     return 0;
