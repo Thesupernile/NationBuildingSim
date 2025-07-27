@@ -1,6 +1,6 @@
 #include "province.cpp"
 #include <vector>
-const double popPerUnitFood = 2000;
+const double popPerUnitFood {2000};
 
 namespace NationClasses{
     class Nation{
@@ -15,8 +15,8 @@ namespace NationClasses{
             int civTechLevel;*/
 
             int population = 0;
-            double goldStockpiled = 0;
-            double foodStockpiled = 0;
+            resourcesList resources;
+
             /*int metalStockpiled;
             int rareMetalStockpiled;
             int woodStockpiled;*/
@@ -58,19 +58,15 @@ namespace NationClasses{
 
             void processResourceGain(){
                 std::cout << "Playing turn of " << nationName << std::endl;
-                double* currentResources[] = {&goldStockpiled, &foodStockpiled};
 
                 for (auto &province : provinces){
-                    province.creditProvinceResources(currentResources);
+                    province.creditProvinceResources(resources);
                 }
-
-                goldStockpiled = *currentResources[0];
-                foodStockpiled = *currentResources[1];
 
                 std::cout << "Collected resources from provinces.\n";
 
                 // Food must be given to provinces in the amount determined by popPerUnitFood
-                foodStockpiled -= population/popPerUnitFood;
+                resources.foodStockpiled -= population/popPerUnitFood;
 
                 std::cout << "Distributed food to provinces. \n";       
             }
@@ -80,12 +76,12 @@ namespace NationClasses{
                 population = 0;
 
                 // If nation is starving, provinces decrease population instead of increasing
-                if (foodStockpiled >= 0){
+                if (resources.foodStockpiled >= 0){
                     isNationStarving = false;
                 }
                 else{
                     isNationStarving = true;
-                    foodStockpiled = 0;
+                    resources.foodStockpiled = 0;
                     std::cout << "You do not have enough food for your people. They are starving.\n";
                 }
 
@@ -104,20 +100,20 @@ namespace NationClasses{
                 std::cout << "Total Provinces: " << provinces.size() << "\n";
                 std::cout << "Nation Population: " << population << "\n\n";
 
-                std::cout << "Gold: " << goldStockpiled << "\n";
-                std::cout << "Food: " << foodStockpiled << "\n";
+                std::cout << "Gold: " << resources.goldStockpiled << "\n";
+                std::cout << "Food: " << resources.foodStockpiled << "\n";
             }
 
             double getGold(){
-                return goldStockpiled;
+                return resources.goldStockpiled;
             }
 
             void modifyGold(int value){
-                goldStockpiled += value;
+                resources.goldStockpiled += value;
             }
 
             double getFood(){
-                return foodStockpiled;
+                return resources.foodStockpiled;
             }
 
     };

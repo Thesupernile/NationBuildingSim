@@ -1,23 +1,23 @@
 #include <iostream>
 #include "headers/provice.hpp"
 
-const double popStarveFactor = 0.95;
+const double popStarveFactor {0.95};
 
 namespace NationClasses{
     class Province{
         static int previousId;
 
         private:
-            int id = 0;                     // Id is also used to determine the province's geographical location
-            int daysStarved = 0;
+            int id {0};                     // Id is also used to determine the province's geographical location
+            int daysStarved {0};
             int population;
-            double popGrowthFactor = 1.02;
+            double popGrowthFactor {1.02};
             /*std::string provinceBiome;
             bool containsMetal;
             bool containsRareMetal;*/
-            int farmLevel = 1;
-            bool containsGold = true;
-            bool isLand = true;
+            int farmLevel {1};
+            bool containsGold {true};
+            bool isLand {true};
 
         public:
             Province (int initPop = 0, int initId = 0, bool isLandInit = false){
@@ -38,18 +38,12 @@ namespace NationClasses{
                 }
             }
 
-            void creditProvinceResources(double* resourcesList[]){
-                double gold = *resourcesList[0];
-                double food = *resourcesList[1];
-
+            void creditProvinceResources(resourcesList &currentResources){
                 if (containsGold){
-                    gold++;
+                    currentResources.goldStockpiled++;
                 }
                 
-                food += farmLevel;
-
-                *resourcesList[0] = gold;
-                *resourcesList[1] = food;
+                currentResources.foodStockpiled += farmLevel;
             }
 
             // Getters and Setters

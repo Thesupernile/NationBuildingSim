@@ -1,13 +1,13 @@
 #include "Classes/nation.cpp"
 #include <string>
 #include <cstdlib>
-const int MAPSIZE = 64;                 // Map size. Map is generated as a square
-const int COLONISECOST = 5;             // Cost to colonise an unowned province
+const int MAPSIZE {64};                 // Map size. Map is generated as a square
+const int COLONISECOST {5};             // Cost to colonise an unowned province
 
 namespace gameUI{
     void createMap(std::vector<NationClasses::Province>* provinceMap){
         for (int i = 0; i < MAPSIZE; i++){
-            NationClasses::Province newProvince;
+            NationClasses::Province newProvince {};
             newProvince.setId(i);
             // Assign province biome at random since it's easier (update in a future version?)
             int randomSelection = rand() % 2;
@@ -26,7 +26,7 @@ namespace gameUI{
 
     void displayMap(std::vector<NationClasses::Province> provinceMap, NationClasses::Nation playerNation = NationClasses::Nation("null")){
         int mapWidth = floor(sqrt(MAPSIZE));
-        int ownedProvincesAdded = 0;
+        int ownedProvincesAdded {0};
 
         for(size_t i = 0; i < MAPSIZE; i++){
             if (provinceMap[i - ownedProvincesAdded].getId() == i){
@@ -89,11 +89,11 @@ namespace gameUI{
     }
 
     NationClasses::Nation createPlayerNation(std::vector<NationClasses::Province>* provinceMap){
-        NationClasses::Province provinceSelected;
-        std::string nationName;
-        std::string userResponseTemp;
-        int x;
-        int y;
+        NationClasses::Province provinceSelected {};
+        std::string nationName {};
+        std::string userResponseTemp {};
+        int x {};
+        int y {};
         bool validProvinceSelected = false;
 
         std::cout << "Name your new nation!\n";

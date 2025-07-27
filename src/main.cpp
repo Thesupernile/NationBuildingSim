@@ -1,7 +1,7 @@
 #include "gameUI.cpp"
 
 int main(){
-    std::vector<NationClasses::Province> provinceMap;
+    std::vector<NationClasses::Province> provinceMap {};
     gameUI::createMap(&provinceMap);
     // Choose a starting province
     NationClasses::Nation playerNation = gameUI::createPlayerNation(&provinceMap);
