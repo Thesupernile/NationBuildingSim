@@ -1,7 +1,7 @@
 #include <iostream>
 #include "headers/provice.hpp"
 
-const double popStarveFactor = 0.8;
+const double popStarveFactor = 0.95;
 
 namespace NationClasses{
     class Province{
@@ -11,7 +11,7 @@ namespace NationClasses{
             int id = 0;                     // Id is also used to determine the province's geographical location
             int daysStarved = 0;
             int population;
-            double popGrowthFactor = 1.2;
+            double popGrowthFactor = 1.02;
             /*std::string provinceBiome;
             bool containsMetal;
             bool containsRareMetal;*/

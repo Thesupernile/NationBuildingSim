@@ -130,6 +130,16 @@ namespace gameUI{
 
     void printHelpInstructions(){
         // Prints instructions of what commands are available for the user
-        
+        std::cout << "<---------- Help ---------->\n";
+        std::cout << "\nMeta Commands:" << '\n';
+        std::cout << "Turn - Moves to the next turn." << '\n';
+        std::cout << "Map - Shows the game map." << '\n';
+        std::cout << "Help - Shows the help screen (This menu)." << '\n';
+        std::cout << "Exit - Exits the program." << '\n';
+
+        std::cout << "\nNation Actions: " << '\n';
+        std::cout << "Colonise - Add an unowned province to your nation." << '\n';
+
+        std::cout << "\n<----------      ---------->" << std::endl;
     }
 }
