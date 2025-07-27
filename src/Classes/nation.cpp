@@ -7,19 +7,17 @@ namespace NationClasses{
         private:
             std::vector<Province> provinces;
             std::string nationName;
-            /*int armyPower;
-            int navalPower;
-            int airPower;
-            int milTechLevel;
-            int diploTechLevel;
-            int civTechLevel;*/
+            /*struct{
+                int armyPower {0};
+                int navalPower {0};
+                int airPower {0};
+                int milTechLevel {0};
+                int diploTechLevel {0};
+                int civTechLevel {0};
+            } nationStats;*/
 
-            int population = 0;
+            int population {0};
             resourcesList resources;
-
-            /*int metalStockpiled;
-            int rareMetalStockpiled;
-            int woodStockpiled;*/
 
             bool isPlayerControlled = false;
 
