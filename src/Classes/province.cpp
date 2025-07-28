@@ -1,75 +1,75 @@
 #include <iostream>
 #include "headers/provice.hpp"
 
-const double popStarveFactor {0.95};
+const double popStarveFactor{ 0.95 };
 
-namespace NationClasses{
-    class Province{
-        static int previousId;
+namespace NationClasses {
+	class Province {
+		static int previousId;
 
-        private:
-            int id {0};                     // Id is also used to determine the province's geographical location
-            int daysStarved {0};
-            int population;
-            double popGrowthFactor {1.02};
-            /*std::string provinceBiome;
-            bool containsMetal;
-            bool containsRareMetal;*/
-            int farmLevel {1};
-            bool containsGold {true};
-            bool isLand {true};
+	private:
+		int id{ 0 };                     // Id is also used to determine the province's geographical location
+		int daysStarved{ 0 };
+		int population;
+		double popGrowthFactor{ 1.02 };
+		/*std::string provinceBiome;
+		bool containsMetal;
+		bool containsRareMetal;*/
+		int farmLevel{ 1 };
+		bool containsGold{ true };
+		bool isLand{ true };
 
-        public:
-            Province (int initPop = 0, int initId = 0, bool isLandInit = false){
-                // By default a province is an empty ocean tile
-                population = initPop;
-                id = initId;
-                isLand = isLandInit;
-            }
+	public:
+		Province(int initPop = 0, int initId = 0, bool isLandInit = false) {
+			// By default a province is an empty ocean tile
+			population = initPop;
+			id = initId;
+			isLand = isLandInit;
+		}
 
-            void updateProvinceOnTurnChange(bool isProvinceStarving){
-                if (isProvinceStarving){
-                    population = population * pow(popStarveFactor, daysStarved);
-                    daysStarved++;
-                }
-                else{
-                    population = population * popGrowthFactor;
-                    daysStarved = 0;
-                }
-            }
+		void updateProvinceOnTurnChange(bool isProvinceStarving) {
+			if (isProvinceStarving) {
+				population = population * pow(popStarveFactor, daysStarved);
+				daysStarved++;
+			}
+			else {
+				population = population * popGrowthFactor;
+				daysStarved = 0;
+			}
+		}
 
-            void creditProvinceResources(resourcesList &currentResources){
-                if (containsGold){
-                    currentResources.goldStockpiled++;
-                }
-                
-                currentResources.foodStockpiled += farmLevel;
-            }
+		void creditProvinceResources(resourcesList& currentResources) {
+			if (containsGold) {
+				currentResources.goldStockpiled++;
+			}
 
-            // Getters and Setters
+			currentResources.foodStockpiled += farmLevel;
+		}
 
-            int getPop(){
-                return population;
-            }
+		// Getters and Setters
 
-            void setPop(int newPop){
-                population = newPop;
-            }
+		int getPop() {
+			return population;
+		}
 
-            int getId(){
-                return id;
-            }
+		void setPop(int newPop) {
+			population = newPop;
+		}
 
-            void setId(int newId){
-                id = newId;
-            }
+		int getId() {
+			return id;
+		}
 
-            void setIsLand(bool isLandNewValue){
-                isLand = isLandNewValue;
-            }
+		void setId(int newId) {
+			id = newId;
+		}
 
-            bool getIsLand(){
-                return isLand;
-            }
-    };
+		void setIsLand(bool isLandNewValue) {
+			isLand = isLandNewValue;
+		}
+
+		bool getIsLand() {
+			return isLand;
+		}
+	};
 }
