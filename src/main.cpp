@@ -9,12 +9,12 @@ int main() {
 	bool runGame{ true };
 	while (runGame) {
 		bool playerTurn{ true };
-		bool colonisedThisTurn{ false };
 		playerNation.processResourceGain();
 		playerNation.displayNationInfo();
 
 		while (playerTurn) {
 			std::string userResponse{};
+			bool colonisedThisTurn{ false };
 
 			std::cout << "Please enter the action you would like to take next (type help for a list of instrucitons)\n";
 			std::cout << "> ";
@@ -28,15 +28,15 @@ int main() {
 				gameUI::displayMap(provinceMap, playerNation);
 			}
 			else if (userResponse == "colonise") {
-				if (colonisedThisTurn){
-					std::cout << "You can only colonise one province per turn\n";
+				if (colonisedThisTurn) {
+					std::cout << "You can only colonise one province per turn";
 				}
 				else if (playerNation.getGold() >= COLONISECOST) {
 					gameUI::coloniseProvince(&provinceMap, &playerNation);
 					colonisedThisTurn = true;
 				}
 				else {
-					std::cout << "You do not have enough gold to complete this action\n";
+					std::cout << "You do not have enough gold to complete this action";
 				}
 			}
 			else if (userResponse == "turn" || userResponse == "next turn") {

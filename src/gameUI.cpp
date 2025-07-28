@@ -49,7 +49,7 @@ namespace gameUI {
 		}
 	}
 
-	void coloniseProvince(std::vector<NationClasses::Province>* provinceMap, NationClasses::Nation* playerNation) {
+	int coloniseProvince(std::vector<NationClasses::Province>* provinceMap, NationClasses::Nation* playerNation) {
 		// Handles colonisation of unowned provinces
 		bool validProvinceSelected{ false };
 		std::string userResponseTemp{};
@@ -72,18 +72,22 @@ namespace gameUI {
 			int targetProvinceId = y * mapWidth + x;
 			for (int i = 0; i < (*provinceMap).size(); i++) {
 				if ((*provinceMap)[i].getId() == targetProvinceId) {
+					if ((*provinceMap)[i].getIsLand()){
+						(*playerNation).addProvince((*provinceMap)[i]);
+						(*provinceMap).erase((*provinceMap).begin() + i);
 
-					(*playerNation).addProvince((*provinceMap)[i]);
-					(*provinceMap).erase((*provinceMap).begin() + i);
+						(*playerNation).modifyGold(-5);
 
-					(*playerNation).modifyGold(-5);
-
-					std::cout << "Colonisation successful\n";
-					validProvinceSelected = true;
+						std::cout << "Colonisation successful\n";
+						validProvinceSelected = true;
+					}
+					else{
+						std::cout << "You cannot colonise ocean provinces.\n";
+					}
 				}
 			}
-			if (!validProvinceSelected) {
-				std::cout << "Province selected is already owned\n";
+			if (!validProvinceSelected){
+				std::cout << "Colonisation unsucessfull. Please check to ensure you have correctly inputted the coordinates and try again\n";
 			}
 		}
 	}
