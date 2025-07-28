@@ -49,7 +49,7 @@ namespace gameUI {
 		}
 	}
 
-	int coloniseProvince(std::vector<NationClasses::Province>* provinceMap, NationClasses::Nation* playerNation) {
+	void coloniseProvince(std::vector<NationClasses::Province>* provinceMap, NationClasses::Nation* playerNation) {
 		// Handles colonisation of unowned provinces
 		bool validProvinceSelected{ false };
 		std::string userResponseTemp{};
