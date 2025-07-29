@@ -39,6 +39,9 @@ int main() {
 					std::cout << "You do not have enough gold to complete this action";
 				}
 			}
+			else if (userResponse == "policy" || userResponse == "set policy"){
+				playerNation.changeNationPolicy();
+			}
 			else if (userResponse == "turn" || userResponse == "next turn") {
 				playerTurn = false;
 			}

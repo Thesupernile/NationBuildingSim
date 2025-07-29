@@ -28,6 +28,10 @@ namespace NationClasses {
 	public:
 		Nation(std::string nameInit) {
 			nationName = nameInit;
+
+			// By default, no multipliers are applied
+			resourceModifiers.foodMulti = 1;
+			resourceModifiers.goldMulti = 1;
 		}
 
 		void addProvince(Province provinceToAdd) {
@@ -94,7 +98,43 @@ namespace NationClasses {
 			}
 			std::cout << "Provinces updated. \n";
 		}
+		
+		void changeNationPolicy() {
+			std::string userInput {};
+			bool validPolicySelected = false;
 
+			while (!validPolicySelected){
+				std::cout << "What national policy would you like to take? (type help for a list of possible policies)\n";
+				std::cin >> userInput;
+				if (userInput == "help"){
+					displayPossiblePolicies();
+				}
+				else if (userInput == "gold"){
+					resourceModifiers.goldMulti = 1.2;
+					resourceModifiers.foodMulti = 0.8;
+					validPolicySelected = true;
+				}
+				else if (userInput == "food"){
+					resourceModifiers.goldMulti = 0.8;
+					resourceModifiers.foodMulti = 1.2;
+					validPolicySelected = true;
+				}
+				else if (userInput == "neutral"){
+					resourceModifiers.goldMulti = 0.8;
+					resourceModifiers.foodMulti = 1.2;
+					validPolicySelected = true;
+				}
+				else{
+					std::cout << "Unknown Command \n";
+				}
+			}
+		}
+
+		void displayPossiblePolicies(){
+			std::cout << "Neutral 	- No modifiers\n";
+			std::cout << "Food 		- Food gain increased, all other resource gains decreased\n";
+			std::cout << "Gold		- Gold gain increased, all other resource gains decreased\n";
+		}
 
 		void displayNationInfo() {
 			std::cout.precision(2);

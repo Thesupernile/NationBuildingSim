@@ -143,6 +143,7 @@ namespace gameUI {
 
 		std::cout << "\nNation Actions: " << '\n';
 		std::cout << "Colonise - Add an unowned province to your nation." << '\n';
+		std::cout << "Policy - Change national policy." << '\n';
 
 		std::cout << "\n<----------      ---------->" << std::endl;
 	}
