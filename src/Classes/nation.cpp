@@ -16,10 +16,14 @@ namespace NationClasses {
 			int civTechLevel    {0};
 		} nationStats;*/
 
+		resourceModifiersList resourceModifiers {};
+
 		int population{ 0 };
-		resourcesList resources;
+		int daysStarved { 0 };
+		resourcesList resources {};
 
 		bool isPlayerControlled = false;
+		
 
 	public:
 		Nation(std::string nameInit) {
@@ -58,7 +62,7 @@ namespace NationClasses {
 			std::cout << "Playing turn of " << nationName << std::endl;
 
 			for (auto& province : provinces) {
-				province.creditProvinceResources(resources);
+				province.creditProvinceResources(resources, resourceModifiers);
 			}
 
 			std::cout << "Collected resources from provinces.\n";
@@ -90,6 +94,7 @@ namespace NationClasses {
 			}
 			std::cout << "Provinces updated. \n";
 		}
+
 
 		void displayNationInfo() {
 			std::cout.precision(2);

@@ -38,12 +38,12 @@ namespace NationClasses {
 			}
 		}
 
-		void creditProvinceResources(resourcesList& currentResources) {
+		void creditProvinceResources(resourcesList& currentResources, resourceModifiersList& resourceModifiers) {
 			if (containsGold) {
-				currentResources.goldStockpiled++;
+				currentResources.goldStockpiled += (1 * resourceModifiers.goldMulti);
 			}
 
-			currentResources.foodStockpiled += farmLevel;
+			currentResources.foodStockpiled += farmLevel * resourceModifiers.foodMulti;
 		}
 
 		// Getters and Setters
