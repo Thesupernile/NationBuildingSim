@@ -37,16 +37,15 @@ namespace gameUI {
 				else {
 					std::cout << ".";
 				}
-
-
-				if (i % mapWidth == (mapWidth - 1)) {
-					lineNum++;
-					std::cout << "\n" << lineNum << "| ";
-				}
 			}
 			else {
 				ownedProvincesAdded++;
 				std::cout << "*";
+			}
+
+			if (i % mapWidth == (mapWidth - 1)) {
+				lineNum++;
+				std::cout << "\n" << lineNum << "| ";
 			}
 		}
 		std::cout << "12345678\n";
@@ -143,7 +142,7 @@ namespace gameUI {
 		std::cout << "Exit - Exits the program." << '\n';
 
 		std::cout << "\nNation Actions: " << '\n';
-		std::cout << "Colonise - Add an unowned province to your nation." << '\n';
+		std::cout << "Colonise - Add an unowned province to your nation. (costs 5 gold)" << '\n';
 		std::cout << "Policy - Change national policy." << '\n';
 
 		std::cout << "\n<----------      ---------->" << std::endl;

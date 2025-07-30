@@ -33,14 +33,14 @@ int main() {
 			}
 			else if (userResponse == "colonise") {
 				if (colonisedThisTurn) {
-					std::cout << "You can only colonise one province per turn";
+					std::cout << "You can only colonise one province per turn\n";
 				}
 				else if (playerNation.getGold() >= COLONISECOST) {
 					gameUI::coloniseProvince(&provinceMap, &playerNation);
 					colonisedThisTurn = true;
 				}
 				else {
-					std::cout << "You do not have enough gold to complete this action";
+					std::cout << "You do not have enough gold to complete this action (required 5)\n";
 				}
 			}
 			else if (userResponse == "policy" || userResponse == "set policy"){
