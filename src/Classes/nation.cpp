@@ -106,6 +106,8 @@ namespace NationClasses {
 			while (!validPolicySelected){
 				std::cout << "What national policy would you like to take? (type help for a list of possible policies)\n";
 				std::cin >> userInput;
+				userInput = utilities::stringToLower(userInput);
+
 				if (userInput == "help"){
 					displayPossiblePolicies();
 				}

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "headers/provice.hpp"
 
 const double popStarveFactor{ 0.95 };

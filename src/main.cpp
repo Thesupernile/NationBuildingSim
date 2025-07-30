@@ -3,6 +3,8 @@
 int main() {
 	std::vector<NationClasses::Province> provinceMap{};
 	gameUI::createMap(&provinceMap);
+	std::cout << "Welcome to the nation building simulator!\n";
+	gameUI::requestToShowInstructions();
 	// Choose a starting province
 	NationClasses::Nation playerNation = gameUI::createPlayerNation(&provinceMap);
 
@@ -20,6 +22,8 @@ int main() {
 			std::cout << "> ";
 
 			std::cin >> userResponse;
+			userResponse = utilities::stringToLower(userResponse);
+
 			if (userResponse == "exit") {
 				runGame = false;
 				playerTurn = false;

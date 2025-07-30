@@ -12,7 +12,7 @@ FetchContent_MakeAvailable(googletest)
 
 
 include_directories(NationSim src/Classes/headers)
-add_executable(NationSim src/main.cpp src/Classes/nation.cpp src/Classes/province.cpp)
+add_executable(NationSim src/main.cpp)
 
 enable_testing()
 

@@ -1,4 +1,4 @@
-#include <string>
+#include "../../utilities.cpp"
 
 struct resourcesList{
 	double goldStockpiled       {0};
