@@ -21,6 +21,10 @@ Instruction Screen:
 
 ![Screenshot of instructions](ProgramScreenshots/instructionsScreen.png)
 
+Main info screen:
+
+![Main Screen Screenshot](ProgramScreenshots/mainScreen.png)
+
 
 Map during colonisation screen:
 
