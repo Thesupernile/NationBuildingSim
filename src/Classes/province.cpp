@@ -14,6 +14,7 @@ namespace NationClasses {
 		/*std::string provinceBiome;
 		bool containsRareMetal;*/
 		int farmLevel{ 1 };
+		int mineLevel{ 1 };
 		bool containsGold{ true };
 		bool containsMetal { true };
 		bool isLand{ true };
@@ -42,7 +43,7 @@ namespace NationClasses {
 				currentResources.goldStockpiled += (1 * resourceModifiers.goldMulti);
 			}
 			if (containsMetal){
-				currentResources.metalStockpiled += (1 * resourceModifiers.metalMulti);
+				currentResources.metalStockpiled += (mineLevel * resourceModifiers.metalMulti);
 			}
 
 			currentResources.foodStockpiled += farmLevel * resourceModifiers.foodMulti;

@@ -1,6 +1,5 @@
 #include "Classes/nation.cpp"
 #include <cstdlib>
-const int MAPSIZE{ 64 };                 // Map size. Map is generated as a square
 const int COLONISECOST{ 5 };             // Cost to colonise an unowned province
 
 namespace gameUI {

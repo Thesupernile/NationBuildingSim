@@ -1,6 +1,7 @@
 #include "province.cpp"
 #include <vector>
-const double popPerUnitFood{ 2000 };
+const double popPerUnitFood{ 2000 };		// How many people are required to eat one unit of food per turn
+const int MAPSIZE{ 64 };                	// Map size. Map is generated as a square
 
 namespace NationClasses {
 	class Nation {
@@ -62,6 +63,35 @@ namespace NationClasses {
 		std::vector<Province> getAllProvinces() {
 			return provinces;
 		}
+
+		void showNation(){
+			// Shows the map but only provinces that are in the nation
+			const int mapWidth = floor(sqrt(MAPSIZE));
+			int lineNum { 1 };
+
+			std::cout << "1| ";
+
+			for (size_t i = 0; i < MAPSIZE; i++){
+				// If a province is in the nation display a * else display a .
+				bool provinceDisplayed = false;
+				for (auto &province : provinces){
+					if (province.getId() == i){
+						std::cout << "*";
+					}
+				}
+				if (!provinceDisplayed){
+					std::cout << ".";
+				}
+
+				if (i % mapWidth == 7){
+					lineNum++;
+					std::cout << "\n" << lineNum << "| ";
+				}
+			}
+			std::cout << "12345678\n";
+		}
+
+
 
 		void processResourceGain() {
 			std::cout << "Playing turn of " << nationName << std::endl;
