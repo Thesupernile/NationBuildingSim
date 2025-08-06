@@ -12,10 +12,10 @@ namespace NationClasses {
 		int population;
 		double popGrowthFactor{ 1.02 };
 		/*std::string provinceBiome;
-		bool containsMetal;
 		bool containsRareMetal;*/
 		int farmLevel{ 1 };
 		bool containsGold{ true };
+		bool containsMetal { true };
 		bool isLand{ true };
 
 	public:
@@ -40,6 +40,9 @@ namespace NationClasses {
 		void creditProvinceResources(resourcesList& currentResources, resourceModifiersList& resourceModifiers) {
 			if (containsGold) {
 				currentResources.goldStockpiled += (1 * resourceModifiers.goldMulti);
+			}
+			if (containsMetal){
+				currentResources.metalStockpiled += (1 * resourceModifiers.metalMulti);
 			}
 
 			currentResources.foodStockpiled += farmLevel * resourceModifiers.foodMulti;

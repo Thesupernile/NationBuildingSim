@@ -11,6 +11,7 @@ int main() {
 	bool runGame{ true };
 	while (runGame) {
 		bool playerTurn{ true };
+
 		playerNation.processResourceGain();
 		playerNation.displayNationInfo();
 
@@ -18,7 +19,7 @@ int main() {
 			std::string userResponse{};
 			bool colonisedThisTurn{ false };
 
-			std::cout << "Please enter the action you would like to take next (type help for a list of instrucitons)\n";
+			std::cout << "Please enter the action you would like to take next (type help for a list of instructions)\n";
 			std::cout << "> ";
 
 			std::cin >> userResponse;

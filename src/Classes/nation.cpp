@@ -32,6 +32,7 @@ namespace NationClasses {
 			// By default, no multipliers are applied
 			resourceModifiers.foodMulti = 1;
 			resourceModifiers.goldMulti = 1;
+			resourceModifiers.metalMulti = 1;
 		}
 
 		void addProvince(Province provinceToAdd) {
@@ -112,18 +113,27 @@ namespace NationClasses {
 					displayPossiblePolicies();
 				}
 				else if (userInput == "gold"){
-					resourceModifiers.goldMulti = 1.2;
-					resourceModifiers.foodMulti = 0.8;
+					resourceModifiers.goldMulti =	1.2;
+					resourceModifiers.metalMulti =	0.8;
+					resourceModifiers.foodMulti =	0.8;
+					validPolicySelected = true;
+				}
+				else if (userInput == "metal"){
+					resourceModifiers.goldMulti =	0.8;
+					resourceModifiers.metalMulti = 	1.2;
+					resourceModifiers.foodMulti =	0.8;
 					validPolicySelected = true;
 				}
 				else if (userInput == "food"){
-					resourceModifiers.goldMulti = 0.8;
-					resourceModifiers.foodMulti = 1.2;
+					resourceModifiers.goldMulti =	0.8;
+					resourceModifiers.metalMulti = 	0.8;
+					resourceModifiers.foodMulti =	1.2;
 					validPolicySelected = true;
 				}
 				else if (userInput == "neutral"){
-					resourceModifiers.goldMulti = 0.8;
-					resourceModifiers.foodMulti = 1.2;
+					resourceModifiers.goldMulti = 	1.0;
+					resourceModifiers.metalMulti =	1.0;
+					resourceModifiers.foodMulti =	1.0;
 					validPolicySelected = true;
 				}
 				else{
@@ -136,6 +146,7 @@ namespace NationClasses {
 			std::cout << "Neutral 	- No modifiers\n";
 			std::cout << "Food 		- Food gain increased, all other resource gains decreased\n";
 			std::cout << "Gold		- Gold gain increased, all other resource gains decreased\n";
+			std::cout << "Metal		- Metal gain increased, all other resource gains decreased\n";
 		}
 
 		void displayNationInfo() {
@@ -146,6 +157,7 @@ namespace NationClasses {
 			std::cout << "Nation Population: " << population << "\n\n";
 
 			std::cout << "Gold: " << resources.goldStockpiled << "\n";
+			std::cout << "Metal: " << resources.metalStockpiled << "\n";
 			std::cout << "Food: " << resources.foodStockpiled << "\n";
 		}
 
